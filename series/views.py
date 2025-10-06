@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.http import HttpResponse
+
+def series(request):
+    return HttpResponse("This is The Series Page.")
