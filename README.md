@@ -44,8 +44,8 @@ Follow these steps to run the project locally 👇
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/SmailAitHemmou/My_Capstone_Project/WatchLog.git
-cd WatchLog
+git clone https://github.com/SmailAitHemmou/My_Capstone_Project.git
+cd My_Capstone_Project
 
 # 2. Create a virtual environment
 python -m venv venv
