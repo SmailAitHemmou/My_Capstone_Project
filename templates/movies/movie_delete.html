@@ -1,0 +1,10 @@
+<a href="{% url 'movies' %}">Go Back</a>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <p>Are You Sure You Want to Delete This Movie?   "{{movie}}"</p>
+    <input type="submit" value="Delete Movie">
+
+</form>
