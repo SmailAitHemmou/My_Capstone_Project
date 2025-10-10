@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+
+
+{% block content %}
+<!-- <h2>This is Page Series.</h2> -->
+<!-- <style>
+    body {
+        background-color: #0a0a0f;
+    }
+</style> -->
+
+
+<main style="margin-top: 80px ;">
+
+    <table>
+
+        <tr>
+            <th>Series:</th>
+            <td><a href="{% url 'serie_create' %}">Add Serie</a></td>
+        </tr>
+        {% for serie in series %}
+        <tr>
+            <td>{{ serie.name_serie }} ({{serie.episodes_watched}}/{{serie.episodes_total}})</td>
+            <td><a href="{% url 'serie_detail' serie.id %}">View</a></td>
+            <td><a href="{% url 'serie_update' serie.id %}">Update</a></td>
+            <td><a href="{% url 'serie_delete' serie.id %}">Delete</a></td>
+
+        </tr>
+        {% empty %}
+        <h3>No Series Found.</h3>
+        {% endfor %}
+
+    </table>
+
+
+
+</main>
+
+{% endblock content %}

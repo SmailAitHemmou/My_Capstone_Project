@@ -2,15 +2,26 @@
 
 {% load static %}
 
+{% block title %}Home | WatchLog{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
 
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-image">
+      <img src="{% static 'image/pxfuel.jpg' %}" alt="Cinematic background">
+    </div>
+    <div class="hero-text">
+      <h1>Track what you watch, discover what’s next.</h1>
+      <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
+      <a href="#" class="btn">Get Started</a>
+    </div>
+  </div>
 
 
-<!-- <img class="image" src="{% static 'image/pxfuel.jpg' %}" alt="image"> -->
-    <style>
-        body{
-            background-color: #0a0a0f;
-        }
-    </style>
 
 {% endblock content %}

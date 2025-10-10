@@ -1,0 +1,10 @@
+<a href="{% url 'series' %}">Go Back</a>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <p>Are You Sure You Want to Delete This Serie?   "{{serie}}"</p>
+    <input type="submit" value="Delete Serie">
+
+</form>
