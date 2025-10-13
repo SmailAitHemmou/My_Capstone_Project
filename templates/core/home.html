@@ -9,18 +9,141 @@
 {% endblock extra_css %}
 
 {% block content %}
+<style>
+  .hero-content {
+    background-color:#0a0a0f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 120px;
+    color: #ffffff;
+    border-radius: 0 0 50px 50px;
+  }
 
-<section class="hero-section">
-  <div class="hero-content">
-    <div class="hero-image">
-      <img src="{% static 'image/pxfuel.jpg' %}" alt="Cinematic background">
-    </div>
-    <div class="hero-text">
-      <h1>Track what you watch, discover what’s next.</h1>
-      <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
-      <a href="#" class="btn">Get Started</a>
-    </div>
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.3rem;
+    background-color: black;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #f5c518;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid #f5c518 ;
+    transition: 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: scale3d(1.03);
+    background-color: #f5c518;
+    color: black;
+    box-shadow: 0 0 25px #f5c518;}
+
+  .hero-image img {
+    border-radius: 30px;
+
+  }
+
+  body{
+    background-color: #0a0a0f;
+  }
+
+  .hero-text{
+    text-align: center;
+    width: 550px;
+    margin-right: 50px;
+  }
+
+  .hello h2, span {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: #ffffff;
+    margin: 0;
+    
+  }
+
+  .hello{
+    background-color: #0a0a0f;
+  }
+
+  .hello span {
+    color: #f5c518;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  .btn-2{
+    display: inline-block;
+    padding: 0.7rem 1.3rem;
+    background-color: black;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #e50914 ;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid #e50914 ;
+    transition: 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-2:hover{
+    transform: scale3d(1.03);
+    background-color: #e50914;
+    color: black;
+    box-shadow: 0 0 25px #e50914;
+}
+
+.hero-text a{
+  margin: 10px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 18px;
+  align-items: center;
+
+}
+
+.username{
+  color: white;
+  text-align: center;
+  margin: 20px 50px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+</style>
+
+{% if request.user.is_authenticated %}
+  <p class="username">{{request.user}}</p>
+  <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+  </form>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+
+<div class="hello">
+    <h2>🍿 Welcome to <span>WatchLog</span></h2>
+</div>
+
+<div class="hero-content">
+  <div class="hero-text">
+    <h1>Track what you watch, discover what’s next.</h1>
+    <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
+    <a href="#" class="btn">Get Started</a>
+    <a href="#" class="btn-2">Explore</a>
   </div>
+  <div class="hero-image">
+    <img src="{% static 'image/pxfuel.jpg' %}" alt="Cinematic background" style="height: 200px; ">
+  </div>
+</div>
 
 
 

@@ -7,27 +7,39 @@ from django.contrib.auth.models import User
 from .forms import SeriesForm
 from .models import Serie
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class SerieList(ListView):
+
+class SerieList(LoginRequiredMixin, ListView):
     model = Serie
     context_object_name = 'series'
 
-class SerieDetail(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['series'] = context['series'].filter(user=self.request.user)
+        context['count'] = context['series'].filter(complete=False).count()
+        return context
+
+class SerieDetail(LoginRequiredMixin, DetailView):
     model = Serie
     context_object_name = 'serie'
     template_name = 'series/serie_detail.html'
 
-class SerieCreate(CreateView):
+class SerieCreate(LoginRequiredMixin, CreateView):
     model = Serie
-    fields = '__all__'
+    fields = ['name_serie', 'episodes_total', 'episodes_watched', 'release_year', 'description', 'complete']
     success_url = reverse_lazy('series')
 
-class SerieUpdate(UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(SerieCreate, self).form_valid(form)
+
+class SerieUpdate(LoginRequiredMixin, UpdateView):
     model = Serie
-    fields = '__all__'
+    fields = ['name_serie', 'episodes_total', 'episodes_watched', 'release_year', 'description', 'complete']
     success_url = reverse_lazy('series')
 
-class SerieDelete(DeleteView):
+class SerieDelete(LoginRequiredMixin, DeleteView):
     model = Serie
     context_object_name = 'serie'
     success_url = reverse_lazy('series')
