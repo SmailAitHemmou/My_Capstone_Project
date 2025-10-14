@@ -11,7 +11,7 @@
 {% block content %}
 <style>
   .hero-content {
-    background-color:#0a0a0f;
+    /* background-color:#0a0a0f; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,6 +48,21 @@
 
   body{
     background-color: #0a0a0f;
+    /* background-image: url("{% static 'image/dineris.jpg' %}"); */
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+  }
+
+  body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
   }
 
   .hero-text{
@@ -67,9 +82,9 @@
     
   }
 
-  .hello{
+  /* .hello{
     background-color: #0a0a0f;
-  }
+  } */
 
   .hello span {
     color: #f5c518;
@@ -116,6 +131,48 @@
   font-weight: bold;
 }
 
+/* main{
+  background-image: url("{% static 'image/dineris.jpg' %}");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+main::before{
+  background-color: rgba(0.6, 0.6, 0.6, 0.6);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+} */
+
+
+.hero-content {
+  position: relative;
+  height: 100vh;
+  background: url("{% static 'image/dineris.jpg' %}") no-repeat center center/cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-text {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  top: 40%;
+  transform: translateY(-40%);
+}
+
 </style>
 
 {% if request.user.is_authenticated %}
@@ -128,12 +185,13 @@
   <a href="{% url 'login' %}">Login</a>
 {% endif %}
 
-
+<div class="hero-sections">
 <div class="hello">
     <h2>🍿 Welcome to <span>WatchLog</span></h2>
 </div>
 
 <div class="hero-content">
+  <div class="overlay"></div>
   <div class="hero-text">
     <h1>Track what you watch, discover what’s next.</h1>
     <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
@@ -141,10 +199,10 @@
     <a href="#" class="btn-2">Explore</a>
   </div>
   <div class="hero-image">
-    <img src="{% static 'image/pxfuel.jpg' %}" alt="Cinematic background" style="height: 200px; ">
+    <!-- <img src="{% static 'image/ragnar.png' %}" alt="Cinematic background" style="height: 400px; "> -->
   </div>
 </div>
-
+</div>
 
 
 {% endblock content %}

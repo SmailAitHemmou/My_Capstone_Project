@@ -12,10 +12,20 @@
 
 <main style="margin-top: 80px ;">
 
+<hr>
+
+    <h5>Series:</h5>
+
+    <div>
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search by Serie Name" value="{{ search_input }}">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
     <table>
 
         <tr>
-            <th>Series:</th>
             <td><a href="{% url 'serie_create' %}">Add Serie</a></td>
         </tr>
         {% for serie in series %}
