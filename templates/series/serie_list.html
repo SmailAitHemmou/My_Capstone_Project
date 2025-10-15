@@ -2,45 +2,184 @@
 
 
 {% block content %}
-<!-- <h2>This is Page Series.</h2> -->
-<!-- <style>
+
+<style>
+
     body {
-        background-color: #0a0a0f;
+        background-color: #FAFAFA;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        padding-top: 50px;
     }
-</style> -->
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    a, p {
+        color: #4b5156;
+        text-decoration: none;
+    }
+
+    .continer{
+        max-width: 600px;
+        margin: auto;
+        background-color: #fff;
+        -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+        box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+    }
+
+    .header-bar{
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
+    }
+
+    .serie-list{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 19px;
+        background-color: #fff;
+        border-top: 1px solid rgb(240, 240, 240);        
+    }
+
+    .name_serie{
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .name_serie a{
+        font-size: 18px;
+        font-weight: 650;
+        margin-left: 10px;
+    }
+
+    .serie-complete-icon{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #11998e, #38ef7d);
+    }
+
+    .serie-incomplete-icon{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgb(210, 210, 210);
+    }
+
+    .link-delete{
+        font-size: 30px;
+        color: #e74c3c;
+        text-decoration: none;
+        font-weight: 1000;
+        padding: 0 10px;
+        line-height: 0px;
+    }
+
+    .search-serie{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .add-serie{
+        font-size: 30px;
+        color: #27ae60;
+        text-decoration: none;
+        font-weight: 1000;
+        padding: 0 10px;
+        line-height: 0px;
+        border: 2px solid #27ae60;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 7px;
+    }
+
+    input[type="text"], textarea{
+        border: 2px solid #11998e;
+        width: 90%;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    label{
+        padding-top: 10px !important;
+        display: block;
+    }
+
+    .btn{
+        background: linear-gradient(90deg, #11998e, #38ef7d);
+        color: #fff;
+        border: none;
+        padding: 7px 12px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-weight: 600;
+    }
 
 
-<main style="margin-top: 80px ;">
+</style>
 
-<hr>
 
-    <h5>Series:</h5>
+<main class="continer" style="margin-top: 80px ;">
 
-    <div>
-        <form method="GET">
-            <input type="text" name="search" placeholder="Search by Serie Name" value="{{ search_input }}">
-            <input type="submit" value="Search">
-        </form>
+    <div class="header-bar" style="text-align: center; padding: 20px;">
+        <div>
+            <h4>Hello {{request.user|title}}</h4>
+            <h5>Welcome to your Serie List</h5>
+            <h5 style="margin: 0;">You have <i>{{count}}</i> Serie{{ count|pluralize:"s"}} not watching yet</h5>
+        </div>
     </div>
 
-    <table>
 
-        <tr>
-            <td><a href="{% url 'serie_create' %}">Add Serie</a></td>
-        </tr>
+    <div class="search-serie">
+        <form method="GET" style="margin-top: 20px; display: flex;">
+            <input type="text" name="search" placeholder="Search by Serie Name" value="{{ search_input }}">
+            <input class="btn" type="submit" value="Search">
+        </form>
+        <a class="add-serie" href="{% url 'serie_create' %}">&#43</a>
+    </div>
+
+
+    <div class="wrapper">
         {% for serie in series %}
-        <tr>
-            <td>{{ serie.name_serie }} ({{serie.episodes_watched}}/{{serie.episodes_total}})</td>
-            <td><a href="{% url 'serie_detail' serie.id %}">View</a></td>
-            <td><a href="{% url 'serie_update' serie.id %}">Update</a></td>
-            <td><a href="{% url 'serie_delete' serie.id %}">Delete</a></td>
 
-        </tr>
+        <div class="serie-list">
+
+            {% if serie.complete %}
+            <div class="name_serie">
+                <div class="serie-complete-icon"></div>
+                <i><s><a href="{% url 'serie_update' serie.id %}">{{serie}}</a></s></i>
+            </div>
+            <a class="link-delete" href="{% url 'serie_delete' serie.id %}">&#215</a>
+            {% else %}
+            <div class="name_serie">
+                <div class="serie-incomplete-icon"></div>
+                <a href="{% url 'serie_update' serie.id %}">{{serie}}</a>
+            </div>
+            <a class="link-delete" href="{% url 'serie_delete' serie.id %}">&#215</a>
+            {% endif %}
+
+        </div>
+
         {% empty %}
-        <h3>No Series Found.</h3>
+        <h3 style="padding: 25px; margin-left: 90px;">No Series Found.</h3>
         {% endfor %}
-
-    </table>
+    </div>
 
 
 
