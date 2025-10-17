@@ -1,9 +1,82 @@
-<h1>Login</h1>
+<style>
+    .continer{
+        margin-top: 50px;
+        margin-left: 320px;
+        max-width: 600px;
+        background-color: #fff;
+        -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+        box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+    }
 
-<form method="POST">    
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
+    .header-bar {
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
+    }
 
-<p>I Don't Have Any Account! <a href="{% url 'register' %}">Register</a></p>
+    .card-body{
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid rgb(240, 240, 240);        
+    }
+
+    p{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .btn{
+        background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
+        color: #fff;
+        border: none;
+        padding: 7px 12px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+        width: 100%;
+        padding: 8px 12px;
+        border: 2px solid purple;
+        border-radius: 8px;
+        background-color: #fff;
+        font-size: 16px;
+        color: #000;
+        transition: 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #e94057;
+        box-shadow: 0 0 8px #e94057;
+    }
+
+</style>
+
+<div class="continer">
+
+    <div class="header-bar">
+        <h1>Login</h1>
+    </div>
+
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn" type="submit" value="Save">
+        </form>
+        <p>I Don't Have Any Account! <a href="{% url 'register' %}">Register</a></p>
+    </div>
+
+</div>

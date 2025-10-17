@@ -5,204 +5,579 @@
 {% block title %}Home | WatchLog{% endblock title %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 {% endblock extra_css %}
 
 {% block content %}
+
 <style>
-  .hero-content {
-    /* background-color:#0a0a0f; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 70px 120px;
-    color: #ffffff;
-    border-radius: 0 0 50px 50px;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.7rem 1.3rem;
-    background-color: black;
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: #f5c518;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    border: 2px solid #f5c518 ;
-    transition: 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn:hover {
-    transform: scale3d(1.03);
-    background-color: #f5c518;
-    color: black;
-    box-shadow: 0 0 25px #f5c518;}
-
-  .hero-image img {
-    border-radius: 30px;
-
-  }
 
   body{
     background-color: #0a0a0f;
-    /* background-image: url("{% static 'image/dineris.jpg' %}"); */
     background-size: cover;
-    height: 100vh;
+    font-family: "Lora", serif;
+    height: 300vh;
     width: 100%;
   }
 
-  body::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: -1;
-  }
-
-  .hero-text{
-    text-align: center;
-    width: 550px;
-    margin-right: 50px;
-  }
-
-  .hello h2, span {
-    font-size: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    color: #ffffff;
-    margin: 0;
-    
-  }
-
-  /* .hello{
-    background-color: #0a0a0f;
-  } */
-
-  .hello span {
-    color: #f5c518;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-
-  .btn-2{
-    display: inline-block;
-    padding: 0.7rem 1.3rem;
-    background-color: black;
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: #e50914 ;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    border: 2px solid #e50914 ;
-    transition: 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-2:hover{
-    transform: scale3d(1.03);
-    background-color: #e50914;
-    color: black;
-    box-shadow: 0 0 25px #e50914;
-}
-
-.hero-text a{
-  margin: 10px;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 18px;
-  align-items: center;
-
-}
-
-.username{
-  color: white;
-  text-align: center;
-  margin: 20px 50px 0 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* main{
-  background-image: url("{% static 'image/dineris.jpg' %}");
+      /* Section One */
+  .hero-section {
+  position: relative;
+  height: 200vh;
+  background-image: url("{% static 'image/image-poster.jpg' %}");
   background-size: cover;
-  height: 100vh;
-  width: 100%;
-}
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  flex-direction: column;
+  background-position: center 8px;
+  }
 
-main::before{
-  background-color: rgba(0.6, 0.6, 0.6, 0.6);
+  .hero-section::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
-} */
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 0;
+  }
 
-
-.hero-content {
+  .hero-content, .extra-text {
   position: relative;
-  height: 100vh;
-  background: url("{% static 'image/dineris.jpg' %}") no-repeat center center/cover;
-}
+  z-index: 1;
+  margin-bottom: 90px;
+  }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
+  .extra-text {
+  margin-top: 150px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  }
 
-.hero-text {
-  position: relative;
-  color: #fff;
-  text-align: center;
-  top: 40%;
-  transform: translateY(-40%);
-}
+  .hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  }
+
+  .hero-content p {
+  font-size: 1.3rem;
+  margin: 10px 0 20px;
+  }
+
+  .hero-content span {
+  color: #f5c518;
+  }
+
+  .extra-text h3 {
+  margin-bottom: 30px;
+  }
+
+  .btn-hero {
+  background: linear-gradient(to right, #f5c518, #ff0000);
+  padding: 10px 25px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  }
+
+  .btn-hero:hover {
+  background: linear-gradient(to right, #ff0000, #f5c518);
+  box-shadow: #ff0000 0px 5px 15px;
+  }
+
+  .btn-hero-1 {
+  background: linear-gradient(to right, #ed6f88, #ff0000);
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-right: 60px;
+  }
+
+  .btn-hero-1:hover {
+  background: linear-gradient(to right, #ff0000, #ed6f88);
+  box-shadow: #ff0000 0px 5px 15px;
+  }
+
+  .btn-hero-2 {
+    background: #f5c518 ;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+  }
+
+  .btn-hero-2:hover {
+  background: linear-gradient(to right, #ffd700, #ed6f88);
+  box-shadow: #ff0000 0px 5px 15px;
+  }
+
+      /* Section Cards */
+  .featured-section {
+    background-color: #0a0a0a;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .featured-section h2 {
+    color: #f5c518;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+
+  .card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    width: 220px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    display: block;
+  }
+
+  .card h3 {
+    margin: 15px 0;
+    color: white;
+  }
+
+      /* Why WatchLog Section */
+  .why-watchlog {
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .why-watchlog .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .section-title span {
+    color: #f5c518;
+  }
+
+  .section-subtitle {
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+  }
+
+  .feature-box {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 40px 25px;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+
+  .feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(233, 64, 87, 0.4);
+    border-color: #e94057;
+  }
+
+  .feature-box i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #f5c518 ;
+  }
+
+  .feature-box h3 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .feature-box p {
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.6;
+  }
+  
+      /* Join Section */
+  .join {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(to right, #f5c518, #ff0000);
+    color: black;
+  }
+
+  .join .btn {
+    background: black;
+    color: #f5c518;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .join .btn:hover {
+    background: white;
+    color: black;
+  }
+
+      /* Movies and Series Cards Section */
+  .cards-section {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 80px 20px;
+    background-color: #0a0a0f;
+    background: radial-gradient(circle at top, #1a1a1f 0%, #0a0a0f 80%);
+  }
+
+  .media-card {
+    flex: 1;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 40px 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .media-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(255, 255, 255, 0.1);
+  }
+
+  .media-card h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #facc15;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .media-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #d1d5db;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #e11d48, #be123c);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .btn:hover {
+    background: linear-gradient(90deg, #be123c, #e11d48);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .cards-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+      /* Footer Section */
+  .footer {
+    background-color: #0a0a0f;
+    color: #f5f5f5;
+    padding: 25px 0;
+    text-align: center;
+    border-top: 2px solid #f5c518;
+    margin-top: 40px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .footer .brand {
+    color: #f5c518;
+    font-weight: bold;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .footer-links a {
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: #ffdd55;
+    transform: translateY(-2px);
+  }
+
 
 </style>
 
-{% if request.user.is_authenticated %}
-  <p class="username">{{request.user}}</p>
-  <form action="{% url 'logout' %}" method="POST" style="display:inline;">
-      {% csrf_token %}
-      <input type="submit" value="Logout">
-  </form>
-{% else %}
-  <a href="{% url 'login' %}">Login</a>
-{% endif %}
+      <!-- Section One -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to <span>WatchLog</span></h1>
+      <h3>Your place to track your favorite Movies & Series</h3>
+      <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
+      <a href="#cards-section" class="btn-hero">Get Started</a>
+    </div>
+    <div class="extra-text">
+      <h3>“Join WatchLog now to track your favorite shows!”</h3>
+      <a href="#join" class="btn-hero-1">Register Now</a>
+      <a href="#why-watchlog" class="btn-hero-2">Read More</a>
+    </div>
+  </section>
 
-<div class="hero-sections">
-<div class="hello">
-    <h2>🍿 Welcome to <span>WatchLog</span></h2>
-</div>
+      <!-- Section Cards -->
+        <!-- Movies Cards Section -->
+  <section id="featured" class="featured-section">
+    <h2>Trending Now in Movies</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="{% static 'image/movies/Avengers.jpg' %}" alt="Movie 1">
+        <h3>Avengers</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/Fast-X.jpg' %}" alt="Movie 2">
+        <h3>Fast X</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/Joker.jpg' %}" alt="Movie 3">
+        <h3>Joker</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/Pirates-of-the-Caribbean.jpg' %}" alt="Movie 4">
+        <h3>Pirates of the Caribbean</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/The-Maze-Runner.jpg' %}" alt="Movie 5">
+        <h3>The Maze Runner</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/The-Wolverine.jpg' %}" alt="Movie 6">
+        <h3>The Wolverine</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/Titanic.webp' %}" alt="Movie 7">
+        <h3>Titanic</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/movies/Venom.jpg' %}" alt="Movie 8">
+        <h3>Venom</h3>
+      </div>
+    </div>
+  </section>
 
-<div class="hero-content">
-  <div class="overlay"></div>
-  <div class="hero-text">
-    <h1>Track what you watch, discover what’s next.</h1>
-    <p>WatchLog helps you organize your movie and series experience in one simple, elegant place.</p>
-    <a href="#" class="btn">Get Started</a>
-    <a href="#" class="btn-2">Explore</a>
-  </div>
-  <div class="hero-image">
-    <!-- <img src="{% static 'image/ragnar.png' %}" alt="Cinematic background" style="height: 400px; "> -->
-  </div>
-</div>
-</div>
+        <!-- Series Cards Section -->
+  <section id="featured" class="featured-section">
+    <h2>Trending Now in Series</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="{% static 'image/series/Breaking-Bad.jpg' %}" alt="serie 1">
+        <h3>Breaking Bad</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/Game-Of-Thronse.jpg' %}" alt="serie 2">
+        <h3>Game Of Thronse</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/Peaky-Blinders.jpg' %}" alt="serie 3">
+        <h3>Peaky Blinders</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/Prison-Break.jpg' %}" alt="serie 4">
+        <h3>Prison Break</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/Squid-Game.jpg' %}" alt="serie 5">
+        <h3>Squid Game</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/The-Walking-Dead.jpg' %}" alt="serie 6">
+        <h3>The Walking Dead</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/series/Vikings.png' %}" alt="serie 7">
+        <h3>Vikings</h3>
+      </div>
+    </div>
+  </section>
+
+        <!-- Anime Cards Section -->
+  <section id="featured" class="featured-section">
+    <h4>You Can Also Watch Anime Movies or Series And Add Them in Their Place</h4>
+    <h2>Trending Now in Anime</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="{% static 'image/anime/Attack-on-Titan.jpg' %}" alt="anime 1">
+        <h3>Attack on Titan</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Black-Clover.jpg' %}" alt="anime 2">
+        <h3>Black Clover</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Deate-Note.jpg' %}" alt="anime 3">
+        <h3>Deate Note</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Demon-Slayer.jpg' %}" alt="anime 4">
+        <h3>Demon Slayer</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Detective-Conan.jpg' %}" alt="anime 5">
+        <h3>Detective Conan</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Dragon-Ball.jpg' %}" alt="anime 6">
+        <h3>Dragon Ball</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Hunter-x-Hunter.jpg' %}" alt="anime 7">
+        <h3>Hunter x Hunter</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Jujutsu-Kaisen.jpg' %}" alt="anime 8">
+        <h3>Jujutsu Kaisen</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Naruto-Shippuden.jpg' %}" alt="anime 9">
+        <h3>NARUTO SHIPPUDEN</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/One-Piece.webp' %}" alt="anime 10">
+        <h3>ONE PIECE</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Parasite.jpg' %}" alt="anime 11">
+        <h3>Parasite</h3>
+      </div>
+      <div class="card">
+        <img src="{% static 'image/anime/Solo-Leveling.jpg' %}" alt="anime 12">
+        <h3>Solo Leveling</h3>
+      </div>
+    </div>
+  </section>
+  
+    <!-- Why WatchLog Section -->
+  <section id="why-watchlog" class="why-watchlog">
+    <div class="container">
+      <h2 class="section-title">Why <span>WatchLog</span>?</h2>
+      <p class="section-subtitle">
+        Your personal space to track, discover, and organize everything you watch 🎬
+      </p>
+
+      <div class="features">
+        <div class="feature-box">
+          <i class="fa-solid fa-bookmark"></i>
+          <h3>Save Your Progress</h3>
+          <p>Keep track of every series and movie you’ve watched or plan to watch.</p>
+        </div>
+
+        <div class="feature-box">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <h3>Track Watch History</h3>
+          <p>Know exactly when and what you’ve watched — all in one place.</p>
+        </div>
+
+        <div class="feature-box">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>Manage Easily</h3>
+          <p>Organize your favorites, update progress, and customize your list with ease.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <!-- Join Section -->
+  <section id="join" class="join">
+    <h2>Join WatchLog Today!</h2>
+    <a href="{% url 'register' %}" class="btn">Sign Up</a>
+  </section>
+
+      <!-- Movies and Series Cards Section -->
+  <section id="cards-section" class="cards-section">
+    <div class="media-card movie-card">
+      <h2>Movies</h2>
+      <p>Here’s the path to explore your personal movie list — where your favorite films live!</p>
+      <a href="{% url 'movies' %}" class="btn">Go to Movies</a>
+    </div>
+
+    <div class="media-card series-card">
+      <h2>Series</h2>
+      <p>Here’s the path to your own series list — track what you’ve watched and what’s next!</p>
+      <a href="{% url 'series' %}" class="btn">Go to Series</a>
+    </div>
+  </section>
+
+      <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 <span class="brand">WatchLog</span>. All rights reserved.</p>
+      <p>Designed & Built by <span class="brand">Smail Ait Hemmou.</span></p>
+      <ul class="footer-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
 
 
 {% endblock content %}
