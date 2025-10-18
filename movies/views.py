@@ -26,10 +26,6 @@ class MovieList(LoginRequiredMixin, ListView):
 
         return context
 
-class MovieDetail(LoginRequiredMixin, DetailView):
-    model = Movie
-    context_object_name = 'movie'
-    template_name = 'movies/movie_detail.html'
 
 class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie

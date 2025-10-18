@@ -8,7 +8,7 @@ class Movie(models.Model):
     release_year = models.IntegerField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
-    crested = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name_movie

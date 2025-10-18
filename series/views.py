@@ -8,6 +8,7 @@ from .forms import SeriesForm
 from .models import Serie
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 class SerieList(LoginRequiredMixin, ListView):
@@ -28,10 +29,6 @@ class SerieList(LoginRequiredMixin, ListView):
 
         return context
 
-class SerieDetail(LoginRequiredMixin, DetailView):
-    model = Serie
-    context_object_name = 'serie'
-    template_name = 'series/serie_detail.html'
 
 class SerieCreate(LoginRequiredMixin, CreateView):
     model = Serie
@@ -54,17 +51,13 @@ class SerieDelete(LoginRequiredMixin, DeleteView):
     template_name = 'series/serie_delete.html'
 
 
+@login_required(login_url='login')
 def add_series(request):
     if request.method == 'POST':
         form = SeriesForm(request.POST)
         if form.is_valid():
             series = form.save(commit=False)
-
-            if request.user.is_authenticated:
-                series.user = request.user
-            else:
-                series.user = User.objects.first()
-
+            series.user = request.user
             series.save()
             return redirect('serie_list')
     else:
