@@ -11,6 +11,32 @@
     <!-- <link rel="stylesheet" href=" {% static 'css/navbar_style.css' %} "> -->
 
     <style>
+        /* style offcanvas */
+        .offcanvas {
+            background: rgba(0, 0, 0, 0.95) !important;
+            color: #f5f5f5;
+            font-family: "Lora", serif;
+        }
+
+        .offcanvas .nav-link {
+            color: #f5f5f5;
+        }
+
+        .offcanvas .nav-link:hover,
+        .offcanvas .nav-link.active {
+            color: #f5c518;
+        }
+
+        .offcanvas-title {
+            color: #f5c518;
+            font-family: "Lora", serif;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* style navbar */
         .navbar {
             background: rgba(0, 0, 0, 0.75);
             height: 70px;
@@ -35,18 +61,18 @@
             text-decoration: none;
         }
 
-        .btn-3{
-        background: #e94057;
-        color: #fff;
-        border: none;
-        padding: 7px 12px;
-        border-radius: 7px;
-        cursor: pointer;
-        font-weight: 600;
-        text-decoration: none;
+        .btn-3 {
+            background: #e94057;
+            color: #fff;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
         }
-        
-        .btn-3:hover{
+
+        .btn-3:hover {
             background: #f27121;
             color: #fff;
             box-shadow: 0 0 10px #f27121;
@@ -124,6 +150,10 @@
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
                                 href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                                href="{% url 'about' %}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 {% if request.resolver_match.url_name == 'movies' %}active{% endif %}"

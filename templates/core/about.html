@@ -1,0 +1,564 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %}About | WatchLog{% endblock %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+    body {
+        background-color: #0a0a0f;
+        color: #FAFAFA;
+        background-size: cover;
+        font-family: "Lora", serif;
+        height: 300vh;
+        width: 100%;
+    }
+
+    /* About Section */
+    .about-container {
+        position: relative;
+        height: 200vh;
+        background-image: url("{% static 'image/main.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 49%;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        flex-direction: column;
+        padding: 40px 50px;
+    }
+
+    .about-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 0;
+    }
+
+    .about-me strong {
+        font-size: 2.7rem;
+        font-weight: bold;
+        color: #f5c518;
+    }
+
+    .about-me {
+        padding: 220px 50px;
+    }
+
+    .btn {
+        background: linear-gradient(to right, #f5c518, #ff0000);
+        padding: 10px 25px;
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: linear-gradient(to right, #ff0000, #f5c518);
+        box-shadow: #ff0000 0px 5px 15px;
+    }
+
+    .about-me,
+    .about-project,
+    .about-our-mission {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+    }
+
+    .about-project h2,
+    .about-our-mission h2 {
+        font-size: 2.6rem;
+    }
+
+    .about-project,
+    .about-our-mission {
+        margin-bottom: 25px;
+    }
+
+    /* Skills Section */
+    .skills-container {
+        margin: 70px 10px;
+        max-width: 1200px;
+        padding: 20px;
+        background-color: #1e1e28;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .skills {
+        text-align: center;
+    }
+
+    .skills h3 {
+        font-size: 2.4rem;
+        margin-bottom: 35px;
+        color: #f5c518;
+        font-weight: bold;
+    }
+
+    .skills ul {
+        list-style-type: none;
+        padding: 0;
+        font-size: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .skills li {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Developer Section */
+    .developer-container h2 {
+        text-align: center;
+        font-size: 2.7rem;
+        margin-bottom: 50px;
+        color: #f5c518;
+    }
+
+    .developer {
+        display: flex;
+    }
+
+    .who-ma-i span {
+        color: #f5c518;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 45px;
+    }
+
+    .who-ma-i strong {
+        font-weight: bold;
+        color: #f5c518;
+    }
+
+    .developer-text {
+        text-align: none;
+        font-weight: 700;
+        max-width: 600px;
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 100px;
+    }
+
+    .developer-image img {
+        width: 350px;
+        border-radius: 200px;
+        margin-left: 100px;
+    }
+
+    .contact a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        background-color: transparent;
+        border: 0.2rem solid #f5c518;
+        font-size: 2rem;
+        border-radius: 50%;
+        margin: 1rem 1rem 1rem 0;
+        transition: 0.3s ease;
+        color: #f5c518;
+        text-decoration: none;
+    }
+
+    .contact a:hover {
+        color: black;
+        transform: scale(1.3) translateY(-5px);
+        background-color: #f5c518;
+        box-shadow: 0 0 25px #f5c518;
+    }
+
+    /* Story Section */
+    .story-container {
+        text-align: center;
+        padding: 60px 0;
+        background: linear-gradient(to right, #f5c518, #ff0000);
+        color: black;
+    }
+
+    .story h2 {
+        font-size: 3rem;
+        margin-bottom: 35px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .story p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        padding: 0px 80px;
+        font-size: bold;
+    }
+
+    /* Features Section */
+    .features-container {
+        text-align: center;
+        margin: 70px 10px;
+        max-width: 1200px;
+        padding: 20px 30px;
+        background-color: #1e1e28;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .features h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        margin-bottom: 35px;
+        color: #f5c518;
+        font-weight: bold;
+    }
+
+    .features ul {
+        list-style-type: none;
+        padding: 0;
+        font-size: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .features li {
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+    }
+
+    .features strong {
+        color: #f5c518;
+        margin-right: 10px;
+    }
+
+    /* Footer Section */
+    .footer {
+        background-color: #0a0a0f;
+        color: #f5f5f5;
+        padding: 25px 0;
+        text-align: center;
+        border-top: 2px solid #f5c518;
+        margin-top: 40px;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .footer .brand {
+        color: #f5c518;
+        font-weight: bold;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .footer-links a {
+        color: #f5c518;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #ffdd55;
+        transform: translateY(-2px);
+    }
+
+
+    /* RESPONSIVE DESIGN (Tablet & Mobile) */
+    @media (max-width: 992px) {
+
+        /* About Section */
+        .about-container {
+            height: auto;
+            padding: 100px 20px;
+            background-attachment: fixed;
+            background-size: center;
+
+        }
+
+        .about-me {
+            padding: 120px 20px;
+        }
+
+        .about-me strong {
+            font-size: 2rem;
+        }
+
+        .about-me p {
+            font-size: 1.1rem;
+        }
+
+        .about-project h2,
+        .about-our-mission h2 {
+            font-size: 2rem;
+        }
+
+        .about-project p,
+        .about-our-mission p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Developer Section */
+        .developer {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .developer-image img {
+            width: 250px;
+            margin: 0 auto 25px auto;
+        }
+
+        .developer-text {
+            margin: 0;
+            max-width: 90%;
+        }
+
+        .who-ma-i span {
+            font-size: 2rem;
+        }
+
+        .developer-text p {
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        .skills ul {
+            gap: 25px;
+            font-size: 1rem;
+        }
+
+        /* Story Section */
+        .story p {
+            padding: 0 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features-container {
+            padding: 20px;
+        }
+
+        .features li {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer-links {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    /* Small screens (Phones < 600px) */
+    @media (max-width: 600px) {
+        .about-me {
+            padding: 80px 10px;
+        }
+
+        .about-me strong {
+            font-size: 1.8rem;
+        }
+
+        .about-project h2,
+        .about-our-mission h2 {
+            font-size: 1.6rem;
+        }
+
+        .about-project p,
+        .about-our-mission p {
+            font-size: 1rem;
+        }
+
+        /* Developer Section */
+        .developer-image img {
+            width: 200px;
+            border-radius: 50%;
+        }
+
+        .developer-text {
+            max-width: 95%;
+        }
+
+        .who-ma-i span {
+            font-size: 1.6rem;
+        }
+
+        .contact a {
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.5rem;
+        }
+
+        /* General fix for background image section */
+        .about-container {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 200% 200%;
+        }
+
+        /* Reduce general padding */
+        section {
+            padding: 40px 10px;
+        }
+    }
+</style>
+
+
+
+<!-- About Section -->
+<section class="about-container">
+    <div class="about-me">
+        <h1>Hi, I'm <strong>Smail Ait Hemmou</strong></h1>
+        <p>
+            I'm a Backend Developer Passionate About Python and Django.
+            This project is part of my graduation work after 8 months of deep learning in Backend Development.
+        </p>
+        <a href="#developer" class="btn">About Me</a>
+    </div>
+
+    <div class="about-project">
+        <h2>About the Project</h2>
+        <p>
+            WatchLog is a personal web app designed to help users track their favorite movies and series.
+            It allows you to manage your watchlist, explore new content, and stay organized with an elegant interface.
+            It also maintains the privacy of each user, as only you can see and control your viewing list.
+        </p>
+    </div>
+
+    <div class="about-our-mission">
+        <h2>Our Mission</h2>
+        <p>At WatchLog, our mission is to enhance your entertainment experience by providing a seamless and
+            user-friendly platform for tracking your viewing habits. We believe that keeping a log of your watched
+            content can enrich your appreciation for movies and series while helping you stay organized.
+        </p>
+    </div>
+</section>
+
+<!-- skills Section -->
+<section class="skills-container">
+    <div class="skills">
+        <h3>Skills & Tools</h3>
+        <ul>
+            <li>Python</li>
+            <li>Django</li>
+            <li>HTML / CSS</li>
+            <li>Git & GitHub</li>
+            <li>SQLite / PostgreSQL</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Developer Section -->
+<section id="developer" class="developer-container">
+    <h2>About the Developer</h2>
+
+    <div class="developer">
+        <div class="developer-image">
+            <img src="{% static 'image/main-porfolio.jpg' %}" alt="Smail Ait Hemmou">
+        </div>
+
+        <div class="developer-text">
+            <div id="who-ma-i" class="who-ma-i">
+                <h1>Hi, I'm <span>Smail Ait Hemmou</span></h1>
+                <p>
+                    Welcome to my website <strong>WatchLog</strong> — a project born from my passion for web development
+                    and
+                    film tracking.
+                    I’m a 25-year-old software engineering student at <strong>Abdelmalek Essaadi University</strong> in
+                    Tangier,
+                    Morocco.
+                    I love exploring how technology can simplify and enhance everyday experiences.
+                </p>
+            </div>
+
+
+            <div id="contact" class="contact">
+                <h3>Connect with Me</h3>
+                <p>
+                <p><strong>My Email:</strong> aithemmousmail@gmail.com</p>
+                <p><strong>My Phone:</strong> 0704757649</p>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Story Section -->
+<section class="story-container">
+    <div class="story">
+        <h2>My Story</h2>
+        <p>
+            Building WatchLog was both challenging and rewarding.
+            I faced real-world problems that pushed me to improve my problem-solving skills and gain
+            a deeper understanding of web development.
+        </p>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-container">
+    <div class="features">
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Personalized Watchlist:</strong> Create and manage your own watchlist with ease.</li>
+            <li><strong>Progress Tracking:</strong> Keep track of your viewing progress for series and anime.</li>
+            <li><strong>Recommendations:</strong> Get personalized recommendations based on your viewing history.</li>
+            <li><strong>User-Friendly Interface:</strong> Enjoy a clean and intuitive design that makes navigation a
+                breeze.</li>
+            <li><strong>Privacy Focused:</strong> Your watchlist is private and secure, accessible only to you.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+        <p>© 2025 <span class="brand">WatchLog</span>. All rights reserved.</p>
+        <p>Designed & Built by <span class="brand">Smail Ait Hemmou.</span></p>
+        <ul class="footer-links">
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'about' %}#who-ma-i">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+{% endblock %}

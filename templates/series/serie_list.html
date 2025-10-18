@@ -1,17 +1,22 @@
 {% extends "base.html"%}
-
+{% load static %}
 
 {% block content %}
 
 <style>
 
     body {
-        background-color: #FAFAFA;
+        background-image: url("{% static 'image/bachground-img.jpg' %}");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
         font-family: "Lora", serif;
         font-optical-sizing: auto;
         font-weight: weight;
         font-style: normal;
         padding-top: 50px;
+        margin-bottom: 60px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -37,7 +42,6 @@
     .header-bar{
         color: #fff;
         padding: 10px;
-        border-radius: 10px 10px 0 0;
         background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
     }
 

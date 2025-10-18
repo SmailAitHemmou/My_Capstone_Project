@@ -1,9 +1,22 @@
+{% load static %}
+
 <style>
+    body {
+        background-image: url("{% static 'image/bachground-img.jpg' %}");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        margin-bottom: 60px;
+    }
 
     .header-bar {
         color: #fff;
         padding: 10px;
-        border-radius: 10px 10px 0 0;
         background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
     }
 
