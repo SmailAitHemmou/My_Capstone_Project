@@ -3,141 +3,7 @@
 
 {% block content %}
 
-
-<style>
-
-    body {
-        background-image: url("{% static 'image/bachground-img.jpg' %}");
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-position: center;
-        font-family: "Lora", serif;
-        font-optical-sizing: auto;
-        font-weight: weight;
-        font-style: normal;
-        padding-top: 50px;
-        margin-bottom: 60px;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    a, p {
-        color: #4b5156;
-        text-decoration: none;
-    }
-
-    .continer{
-        max-width: 600px;
-        margin: auto;
-        background-color: #fff;
-        -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
-        box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
-    }
-
-    .header-bar{
-        color: #fff;
-        padding: 10px;
-        background: linear-gradient(90deg, #8a2387, #e94057, #f27121);
-    }
-
-    .movie-list{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 19px;
-        background-color: #fff;
-        border-top: 1px solid rgb(240, 240, 240);
-    }
-
-    .name_movie{
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .name_movie a{
-        font-size: 18px;
-        font-weight: 650;
-        margin-left: 10px;
-    }
-
-    .movie-complete-icon{
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: linear-gradient(90deg, #11998e, #38ef7d);
-    }
-
-    .movie-incomplete-icon{
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: rgb(210, 210, 210);
-    }
-
-    .link-delete{
-        font-size: 30px;
-        color: #e74c3c;
-        text-decoration: none;
-        font-weight: 1000;
-        padding: 0 10px;
-        line-height: 0px;
-    }
-
-    .search-movie{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .add-movie{
-        font-size: 30px;
-        color: #27ae60;
-        text-decoration: none;
-        font-weight: 1000;
-        padding: 0 10px;
-        line-height: 0px;
-        border: 2px solid #27ae60;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 7px;
-    }
-
-    input[type="text"], textarea{
-        border: 2px solid #11998e;
-        width: 90%;
-        padding: 10px;
-        border-radius: 5px;
-    }
-
-    label{
-        padding-top: 10px !important;
-        display: block;
-    }
-
-    .btn{
-        background: linear-gradient(90deg, #11998e, #38ef7d);
-        color: #fff;
-        border: none;
-        padding: 7px 12px;
-        border-radius: 7px;
-        cursor: pointer;
-        font-weight: 600;
-    }
-
-
-</style>
+<link rel="stylesheet" href="{% static 'css/movies/movie_list_style.css' %}">
 
 
 <main class="continer" style="margin-top: 80px ;">
@@ -164,23 +30,23 @@
     <div class="wrapper">
         {% for movie in movies %}
 
-            <div class="movie-list">
+        <div class="movie-list">
 
-                {% if movie.complete %}
-                <div class="name_movie">
-                    <div class="movie-complete-icon"></div>
-                    <i><s><a href="{% url 'movie_update' movie.id %}">{{movie}}</a></s></i>
-                </div>
-                <a class="link-delete" href="{% url 'movie_delete' movie.id %}">&#215</a>
-                {% else %}
-                <div class="name_movie">
-                    <div class="movie-incomplete-icon"></div>
-                    <a href="{% url 'movie_update' movie.id %}">{{movie}}</a>
-                </div>
-                <a class="link-delete" href="{% url 'movie_delete' movie.id %}">&#215</a>
-                {% endif %}
-                
+            {% if movie.complete %}
+            <div class="name_movie">
+                <div class="movie-complete-icon"></div>
+                <i><s><a href="{% url 'movie_update' movie.id %}">{{movie}}</a></s></i>
             </div>
+            <a class="link-delete" href="{% url 'movie_delete' movie.id %}">&#215</a>
+            {% else %}
+            <div class="name_movie">
+                <div class="movie-incomplete-icon"></div>
+                <a href="{% url 'movie_update' movie.id %}">{{movie}}</a>
+            </div>
+            <a class="link-delete" href="{% url 'movie_delete' movie.id %}">&#215</a>
+            {% endif %}
+
+        </div>
 
         {% empty %}
         <h3 style="padding: 25px; margin-left: 90px;">No Movies Found.</h3>
