@@ -23,4 +23,7 @@ urlpatterns = [
     path('movies/',include('movies.urls')),
     path('series/',include('series.urls')),
     path('accounts/',include('accounts.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('movies.api_urls')),
+    path('api/', include('series.api_urls')), 
 ]
