@@ -29,6 +29,21 @@ Users can:
 
 ---
 
+## REST API Features
+This project now includes a REST API built with Django REST Framework.
+
+**Endpoints:**
+- `/series/` – List and create series
+- `/series/<id>/` – Retrieve, update, or delete a series
+
+Authenticated users can manage their own series.
+
+- `/movies/` – List and create movies
+- `/movies/<id>/` – Retrieve, update, or delete a movies
+
+Authenticated users can manage their own movies.
+
+
 ## 🧰 Technologies Used
 
 - **Python** (Django Framework)
